@@ -1,3 +1,5 @@
+using FluentAssertions;
+
 namespace TicTacToeKataTests {
     public class TicTacToeGameShould {
         [SetUp]
@@ -5,8 +7,21 @@ namespace TicTacToeKataTests {
         }
 
         [Test]
-        public void Test1() {
-            Assert.Pass();
+        public void return_playerX_to_start()
+        {
+            var ticTacToeGame = new TicTacToeGame();
+
+            var playerTurn = ticTacToeGame.GetPlayerTurn();
+                
+            playerTurn.Should().Be("X");
+        }
+    }
+
+    public class TicTacToeGame
+    {
+        public string GetPlayerTurn()
+        {
+            return "X";
         }
     }
 }
