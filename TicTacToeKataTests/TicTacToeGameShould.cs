@@ -22,7 +22,7 @@ namespace TicTacToeKataTests {
 
             var board = ticTacToeGame.SetMarkOnBoard(x, y);
 
-            board[x, y].Should().Be("X");
+            board.GetCoordinate(x, y).Should().Be("X");
         }
 
         [TestCase(0,0)]
@@ -33,7 +33,7 @@ namespace TicTacToeKataTests {
 
             var board = ticTacToeGame.SetMarkOnBoard(x, y);
 
-            board[x, y].Should().Be("Y");
+            board.GetCoordinate(x, y).Should().Be("Y");
         }
 
         [Test]
