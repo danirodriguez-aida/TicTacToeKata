@@ -45,5 +45,15 @@ namespace TicTacToeKataTests {
 
             playerTurn.Should().Be("X");
         }
+
+        [Test]
+        public void fail_when_playing_the_same_coordinate() {
+            var ticTacToeGame = new TicTacToeGame();
+            ticTacToeGame.SetMarkOnBoard(0, 0);
+
+            Action action = () => ticTacToeGame.SetMarkOnBoard(0, 0);
+
+            action.Should().Throw<UsedCoordinateException>();
+        }
     }
 }
