@@ -10,7 +10,7 @@ public class TicTacToeGame {
 
     public string[,] SetMarkOnBoard(int x, int y) {
         if (board[x, y] != null) throw new UsedCoordinateException();
-        board[x, y] = "X";
+        board[x, y] = turn;
         turn = turn == "X" ? "Y" : "X";
         return board;
     }

@@ -25,6 +25,17 @@ namespace TicTacToeKataTests {
             board[x, y].Should().Be("X");
         }
 
+        [TestCase(0,0)]
+        [TestCase(0,1)]
+        public void set_mark_on_the_board_when_playerY_plays_coordinates(int x, int y) {
+            var ticTacToeGame = new TicTacToeGame();
+            ticTacToeGame.SetMarkOnBoard(1, 1);
+
+            var board = ticTacToeGame.SetMarkOnBoard(x, y);
+
+            board[x, y].Should().Be("Y");
+        }
+
         [Test]
         public void return_playerY_after_playerX_plays() {
             var ticTacToeGame = new TicTacToeGame();
