@@ -15,13 +15,14 @@ namespace TicTacToeKataTests {
             playerTurn.Should().Be("X");
         }
 
-        [Test]
-        public void set_mark_on_the_board_when_playerX_plays() {
+        [TestCase(0,0)]
+        [TestCase(0,1)]
+        public void set_mark_on_the_board_when_playerX_plays_coordinates(int x, int y) {
             var ticTacToeGame = new TicTacToeGame();
 
-            var board = ticTacToeGame.SetMarkOnBoard(0, 0);
+            var board = ticTacToeGame.SetMarkOnBoard(x, y);
 
-            board[0, 0].Should().Be("X");
+            board[x, y].Should().Be("X");
         }
 
         [Test]
@@ -54,7 +55,7 @@ namespace TicTacToeKataTests {
 
         public string[,] SetMarkOnBoard(int x, int y) {
             var board = new string[3, 3];
-            board[0, 0] = "X";
+            board[x, y] = "X";
             turn = turn == "X" ? "Y" : "X";
             return board;
         }
