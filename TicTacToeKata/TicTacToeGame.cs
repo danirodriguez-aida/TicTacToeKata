@@ -8,8 +8,8 @@ public class TicTacToeGame {
         return turn;
     }
 
-    public Board SetMarkOnBoard(int x, int y) {
-        board.SetCoordinate(turn,x ,y);
+    public Board SetMarkOnBoard(Coordinate coordinate) {
+        board.SetCoordinate(turn, coordinate.X, coordinate.Y);
         turn = turn == "X" ? "Y" : "X";
         return board;
     }
