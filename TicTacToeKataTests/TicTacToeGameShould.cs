@@ -7,50 +7,55 @@ namespace TicTacToeKataTests {
         }
 
         [Test]
-        public void return_playerX_to_start()
-        {
+        public void return_playerX_to_start() {
             var ticTacToeGame = new TicTacToeGame();
 
             var playerTurn = ticTacToeGame.GetPlayerTurn();
-                
+
             playerTurn.Should().Be("X");
         }
 
         [Test]
-        public void set_mark_on_the_board_when_playerX_plays()
-        {
+        public void set_mark_on_the_board_when_playerX_plays() {
             var ticTacToeGame = new TicTacToeGame();
 
-            var board = ticTacToeGame.SetMarkOnBoard(0,0);
+            var board = ticTacToeGame.SetMarkOnBoard(0, 0);
 
             board[0, 0].Should().Be("X");
         }
 
         [Test]
-        public void return_playerY_after_playerX_plays()
-        {
+        public void return_playerY_after_playerX_plays() {
             var ticTacToeGame = new TicTacToeGame();
-            ticTacToeGame.SetMarkOnBoard(0,1);
+            ticTacToeGame.SetMarkOnBoard(0, 1);
 
             var playerTurn = ticTacToeGame.GetPlayerTurn();
 
             playerTurn.Should().Be("Y");
         }
+
+        [Test]
+        public void return_playerX_after_playerY_plays() {
+            var ticTacToeGame = new TicTacToeGame();
+            ticTacToeGame.SetMarkOnBoard(0, 1);
+            ticTacToeGame.SetMarkOnBoard(1, 1);
+
+            var playerTurn = ticTacToeGame.GetPlayerTurn();
+
+            playerTurn.Should().Be("X");
+        }
     }
 
-    public class TicTacToeGame
-    {
+    public class TicTacToeGame {
         private string turn = "X";
-        public string GetPlayerTurn()
-        {
+        public string GetPlayerTurn() {
             return turn;
         }
 
-        public string[,] SetMarkOnBoard(int x, int y)
-        {
+        public string[,] SetMarkOnBoard(int x, int y) {
             var board = new string[3, 3];
             board[0, 0] = "X";
-            turn = "Y";
+            turn = turn == "X" ? "Y" : "X";
             return board;
         }
     }
