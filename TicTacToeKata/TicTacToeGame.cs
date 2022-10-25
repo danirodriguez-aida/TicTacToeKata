@@ -15,10 +15,9 @@ public class TicTacToeGame {
     }
 
     public string GetWinner() {
-        var rows = new[] { 0, 1, 2 };
-        var columns = new[] { 0, 1, 2 };
-        var playerXWinInRow = rows.Any(r => IsSameSymbolForRow(r, "X"));
-        var playerXWinInColumn = rows.Any(r => IsSameSymbolForColumn(r, "X"));
+        var sizeBoard = new[] { 0, 1, 2 };
+        var playerXWinInRow = sizeBoard.Any(r => IsSameSymbolForRow(r, "X"));
+        var playerXWinInColumn = sizeBoard.Any(r => IsSameSymbolForColumn(r, "X"));
         if (playerXWinInRow || playerXWinInColumn)
             return "Player X";
         return string.Empty;
