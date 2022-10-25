@@ -110,7 +110,7 @@ namespace TicTacToeKataTests {
 
         [TestCase(0, 2)]
         [TestCase(2, 0)]
-        public void playerX_wins_for_diagonal(int yPlayerXFirst, int yPlayerXLast ) {
+        public void playerX_wins_for_diagonal(int yPlayerXFirst, int yPlayerXLast) {
             var ticTacToeGame = new TicTacToeGame();
             ticTacToeGame.SetMarkOnBoard(new Square(0, yPlayerXFirst));
             ticTacToeGame.SetMarkOnBoard(new Square(0, 1));
@@ -121,6 +121,23 @@ namespace TicTacToeKataTests {
             var winner = ticTacToeGame.GetWinner();
 
             winner.Should().Be("Player X");
+        }
+
+        [TestCase(1, 0)]
+        [TestCase(2, 1)]
+        [TestCase(0, 2)]
+        public void playerY_wins_for_row(int xPlayerX, int xPlayerY) {
+            var ticTacToeGame = new TicTacToeGame();
+            ticTacToeGame.SetMarkOnBoard(new Square(xPlayerX, 0));
+            ticTacToeGame.SetMarkOnBoard(new Square(xPlayerY, 0));
+            ticTacToeGame.SetMarkOnBoard(new Square(xPlayerX, 1));
+            ticTacToeGame.SetMarkOnBoard(new Square(xPlayerY, 1));
+            ticTacToeGame.SetMarkOnBoard(new Square(xPlayerX == 2 ? 0 : xPlayerX + 1, 2));
+            ticTacToeGame.SetMarkOnBoard(new Square(xPlayerY, 2));
+
+            var winner = ticTacToeGame.GetWinner();
+
+            winner.Should().Be("Player Y");
         }
     }
 }

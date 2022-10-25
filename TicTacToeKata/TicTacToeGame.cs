@@ -20,8 +20,11 @@ public class TicTacToeGame {
         var playerXWinInColumn = sizeBoard.Any(r => IsSameSymbolForColumn(r, "X"));
         var playerXWinInDiagonal = IsSameSymbolForDiagonal(true, "X") || IsSameSymbolForDiagonal(false, "X");
 
+        var playerYWinInRow = sizeBoard.Any(r => IsSameSymbolForRow(r, "Y"));
+
         if (playerXWinInRow || playerXWinInColumn || playerXWinInDiagonal)
             return "Player X";
+        if (playerYWinInRow)  return "Player Y";
         return string.Empty;
     }
 
