@@ -14,27 +14,26 @@ public class TicTacToeGame {
         return board;
     }
 
-    public string GetWinner()
-    {
-        var squaresColumn0 = new List<Square>()
-        {
-            new Square(0, 0), new Square(0, 1),new Square(0, 2)
-        };
-        var squaresColumn1 = new List<Square>()
-        {
-            new Square(1, 0), new Square(1, 1),new Square(1, 2)
-        };
-        var squaresColumn2 = new List<Square>()
-        {
-            new Square(2, 0), new Square(2, 1),new Square(2, 2)
-        };
+    public string GetWinner() {
 
-        var allXForColumn0 = squaresColumn0.All(s => board.GetSymbol(s) == "X");
-        var allXForColumn1 = squaresColumn1.All(s => board.GetSymbol(s) == "X");
-        var allXForColumn2 = squaresColumn2.All(s => board.GetSymbol(s) == "X");
+        var allXForColumn0 = IsSameSymbolForRow(0, "X");
+        var allXForColumn1 = IsSameSymbolForRow(1, "X");
+        var allXForColumn2 = IsSameSymbolForRow(2, "X");
 
-        if (allXForColumn0 ||  allXForColumn1 || allXForColumn2)
+        if (allXForColumn0 || allXForColumn1 || allXForColumn2)
             return "Player X";
         return string.Empty;
+    }
+
+    private bool IsSameSymbolForRow(int row, string symbol)
+    {
+        return GetSquaresForRow(row).All(s => board.GetSymbol(s) == symbol);
+    }
+
+    private static IEnumerable<Square> GetSquaresForRow(int row) {
+        return new List<Square>()
+        {
+            new(row, 0), new (row, 1), new (row, 2)
+        };
     }
 }
