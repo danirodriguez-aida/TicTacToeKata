@@ -66,5 +66,14 @@ namespace TicTacToeKataTests {
 
             action.Should().Throw<UsedCoordinateException>();
         }
+
+        [Test]
+        public void without_winner() {
+            var ticTacToeGame = new TicTacToeGame();
+         
+            var winner = ticTacToeGame.GetWinner();
+
+            winner.Should().Be(string.Empty);
+        }
     }
 }

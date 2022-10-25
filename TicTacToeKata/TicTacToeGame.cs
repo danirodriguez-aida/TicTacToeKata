@@ -13,4 +13,9 @@ public class TicTacToeGame {
         turn = turn == "X" ? "Y" : "X";
         return board;
     }
+
+    public string GetWinner()
+    {
+        return string.Empty;
+    }
 }
