@@ -16,6 +16,8 @@ public class TicTacToeGame {
 
     public string GetWinner()
     {
+        if (board.GetCoordinate(0, 0) == "X" && board.GetCoordinate(0, 1) == "X" && board.GetCoordinate(0, 2) == "X")
+            return "Player X";
         return string.Empty;
     }
 }

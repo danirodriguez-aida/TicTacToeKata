@@ -75,5 +75,19 @@ namespace TicTacToeKataTests {
 
             winner.Should().Be(string.Empty);
         }
+
+        [Test]
+        public void playerX_wins() {
+            var ticTacToeGame = new TicTacToeGame();
+            ticTacToeGame.SetMarkOnBoard(new Square(0, 0));
+            ticTacToeGame.SetMarkOnBoard(new Square(1, 1));
+            ticTacToeGame.SetMarkOnBoard(new Square(0, 1));
+            ticTacToeGame.SetMarkOnBoard(new Square(1, 2));
+            ticTacToeGame.SetMarkOnBoard(new Square(0, 2));
+            
+            var winner = ticTacToeGame.GetWinner();
+
+            winner.Should().Be("Player X");
+        }
     }
 }
