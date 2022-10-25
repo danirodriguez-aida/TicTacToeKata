@@ -18,7 +18,9 @@ public class TicTacToeGame {
         var sizeBoard = new[] { 0, 1, 2 };
         var playerXWinInRow = sizeBoard.Any(r => IsSameSymbolForRow(r, "X"));
         var playerXWinInColumn = sizeBoard.Any(r => IsSameSymbolForColumn(r, "X"));
-        if (playerXWinInRow || playerXWinInColumn)
+        var playerXWinInDiagonal = IsSameSymbolForDiagonal(true, "X") || IsSameSymbolForDiagonal(false, "X");
+
+        if (playerXWinInRow || playerXWinInColumn || playerXWinInDiagonal)
             return "Player X";
         return string.Empty;
     }
@@ -26,9 +28,14 @@ public class TicTacToeGame {
     private bool IsSameSymbolForRow(int row, string symbol) {
         return GetSquaresForRow(row).All(s => board.GetSymbol(s) == symbol);
     }
+
     private bool IsSameSymbolForColumn(int column, string symbol) {
         return GetSquaresForColumn(column).All(s => board.GetSymbol(s) == symbol);
     }
+    private bool IsSameSymbolForDiagonal(bool isLeftUpToRightDown, string symbol) {
+        return GetSquaresForDiagonal(isLeftUpToRightDown).All(s => board.GetSymbol(s) == symbol);
+    }
+
     private static IEnumerable<Square> GetSquaresForRow(int row) {
         return new List<Square>()
         {
@@ -40,6 +47,19 @@ public class TicTacToeGame {
         return new List<Square>()
         {
             new(0,column), new (1,column), new (2,column)
+        };
+    }
+
+    private static IEnumerable<Square> GetSquaresForDiagonal(bool isLeftUpToRightDown) {
+        if (isLeftUpToRightDown) {
+            return new List<Square>()
+            {
+                new(0,0), new (1,1), new (2,2)
+            };
+        }
+        return new List<Square>()
+        {
+            new(0,2), new (1,1), new (2,0)
         };
     }
 }

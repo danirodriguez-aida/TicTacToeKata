@@ -107,5 +107,20 @@ namespace TicTacToeKataTests {
 
             winner.Should().Be("Player X");
         }
+
+        [TestCase(0, 2)]
+        [TestCase(2, 0)]
+        public void playerX_wins_for_diagonal(int yPlayerXFirst, int yPlayerXLast ) {
+            var ticTacToeGame = new TicTacToeGame();
+            ticTacToeGame.SetMarkOnBoard(new Square(0, yPlayerXFirst));
+            ticTacToeGame.SetMarkOnBoard(new Square(0, 1));
+            ticTacToeGame.SetMarkOnBoard(new Square(1, 1));
+            ticTacToeGame.SetMarkOnBoard(new Square(1, 0));
+            ticTacToeGame.SetMarkOnBoard(new Square(2, yPlayerXLast));
+
+            var winner = ticTacToeGame.GetWinner();
+
+            winner.Should().Be("Player X");
+        }
     }
 }
