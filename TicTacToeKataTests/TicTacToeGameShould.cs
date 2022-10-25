@@ -76,14 +76,15 @@ namespace TicTacToeKataTests {
             winner.Should().Be(string.Empty);
         }
 
-        [Test]
-        public void playerX_wins() {
+        [TestCase(0,1)]
+        [TestCase(1,2)]
+        public void playerX_wins(int xPlayerX, int xPlayerY) {
             var ticTacToeGame = new TicTacToeGame();
-            ticTacToeGame.SetMarkOnBoard(new Square(0, 0));
-            ticTacToeGame.SetMarkOnBoard(new Square(1, 1));
-            ticTacToeGame.SetMarkOnBoard(new Square(0, 1));
-            ticTacToeGame.SetMarkOnBoard(new Square(1, 2));
-            ticTacToeGame.SetMarkOnBoard(new Square(0, 2));
+            ticTacToeGame.SetMarkOnBoard(new Square(xPlayerX, 0));
+            ticTacToeGame.SetMarkOnBoard(new Square(xPlayerY, 0));
+            ticTacToeGame.SetMarkOnBoard(new Square(xPlayerX, 1));
+            ticTacToeGame.SetMarkOnBoard(new Square(xPlayerY, 2));
+            ticTacToeGame.SetMarkOnBoard(new Square(xPlayerX, 2));
             
             var winner = ticTacToeGame.GetWinner();
 
