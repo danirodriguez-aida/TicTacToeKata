@@ -15,6 +15,16 @@ namespace TicTacToeKataTests {
             playerTurn.Should().Be("X");
         }
 
+        [Test]
+        public void return_playerY_after_playerX_plays() {
+            var ticTacToeGame = new TicTacToeGame();
+            ticTacToeGame.SetMarkOnBoard(new Coordinate(0, 1));
+
+            var playerTurn = ticTacToeGame.GetPlayerTurn();
+
+            playerTurn.Should().Be("Y");
+        }
+
         [TestCase(0,0)]
         [TestCase(0,1)]
         public void set_mark_on_the_board_when_playerX_plays_coordinates(int x, int y) {
@@ -34,16 +44,6 @@ namespace TicTacToeKataTests {
             var board = ticTacToeGame.SetMarkOnBoard(new Coordinate(x, y));
 
             board.GetCoordinate(x, y).Should().Be("Y");
-        }
-
-        [Test]
-        public void return_playerY_after_playerX_plays() {
-            var ticTacToeGame = new TicTacToeGame();
-            ticTacToeGame.SetMarkOnBoard(new Coordinate(0, 1));
-
-            var playerTurn = ticTacToeGame.GetPlayerTurn();
-
-            playerTurn.Should().Be("Y");
         }
 
         [Test]
