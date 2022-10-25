@@ -14,13 +14,11 @@ public class TicTacToeGame {
         return board;
     }
 
-    public string GetWinner() {
-
-        var allXForColumn0 = IsSameSymbolForRow(0, "X");
-        var allXForColumn1 = IsSameSymbolForRow(1, "X");
-        var allXForColumn2 = IsSameSymbolForRow(2, "X");
-
-        if (allXForColumn0 || allXForColumn1 || allXForColumn2)
+    public string GetWinner()
+    {
+        var rows = new[] { 0, 1, 2 };
+        var playerXWinInRow = rows.Any(r => IsSameSymbolForRow(r, "X"));
+        if (playerXWinInRow)
             return "Player X";
         return string.Empty;
     }
