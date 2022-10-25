@@ -139,5 +139,22 @@ namespace TicTacToeKataTests {
 
             winner.Should().Be("Player Y");
         }
+
+        [TestCase(1, 0)]
+        [TestCase(2, 1)]
+        [TestCase(0, 2)]
+        public void playerY_wins_for_column(int yPlayerX, int yPlayerY) {
+            var ticTacToeGame = new TicTacToeGame();
+            ticTacToeGame.SetMarkOnBoard(new Square(0, yPlayerX));
+            ticTacToeGame.SetMarkOnBoard(new Square(0, yPlayerY));
+            ticTacToeGame.SetMarkOnBoard(new Square(1, yPlayerX));
+            ticTacToeGame.SetMarkOnBoard(new Square(1, yPlayerY));
+            ticTacToeGame.SetMarkOnBoard(new Square(2, yPlayerX == 2 ? 0 : yPlayerX + 1));
+            ticTacToeGame.SetMarkOnBoard(new Square(2, yPlayerY));
+
+            var winner = ticTacToeGame.GetWinner();
+
+            winner.Should().Be("Player Y");
+        }
     }
 }
