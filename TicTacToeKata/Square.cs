@@ -1,8 +1,8 @@
 namespace TicTacToeKataTests;
 
-public class Coordinate
+public class Square
 {
-    public Coordinate(int x, int y)
+    public Square(int x, int y)
     {
         X = x;
         Y = y;

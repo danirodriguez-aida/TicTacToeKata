@@ -18,7 +18,7 @@ namespace TicTacToeKataTests {
         [Test]
         public void return_playerY_after_playerX_plays() {
             var ticTacToeGame = new TicTacToeGame();
-            ticTacToeGame.SetMarkOnBoard(new Coordinate(0, 1));
+            ticTacToeGame.SetMarkOnBoard(new Square(0, 1));
 
             var playerTurn = ticTacToeGame.GetPlayerTurn();
 
@@ -30,7 +30,7 @@ namespace TicTacToeKataTests {
         public void set_mark_on_the_board_when_playerX_plays_coordinates(int x, int y) {
             var ticTacToeGame = new TicTacToeGame();
 
-            var board = ticTacToeGame.SetMarkOnBoard(new Coordinate(x, y));
+            var board = ticTacToeGame.SetMarkOnBoard(new Square(x, y));
 
             board.GetCoordinate(x, y).Should().Be("X");
         }
@@ -39,9 +39,9 @@ namespace TicTacToeKataTests {
         [TestCase(0,1)]
         public void set_mark_on_the_board_when_playerY_plays_coordinates(int x, int y) {
             var ticTacToeGame = new TicTacToeGame();
-            ticTacToeGame.SetMarkOnBoard(new Coordinate(1, 1));
+            ticTacToeGame.SetMarkOnBoard(new Square(1, 1));
 
-            var board = ticTacToeGame.SetMarkOnBoard(new Coordinate(x, y));
+            var board = ticTacToeGame.SetMarkOnBoard(new Square(x, y));
 
             board.GetCoordinate(x, y).Should().Be("Y");
         }
@@ -49,8 +49,8 @@ namespace TicTacToeKataTests {
         [Test]
         public void return_playerX_after_playerY_plays() {
             var ticTacToeGame = new TicTacToeGame();
-            ticTacToeGame.SetMarkOnBoard(new Coordinate(0, 1));
-            ticTacToeGame.SetMarkOnBoard(new Coordinate(1, 1));
+            ticTacToeGame.SetMarkOnBoard(new Square(0, 1));
+            ticTacToeGame.SetMarkOnBoard(new Square(1, 1));
 
             var playerTurn = ticTacToeGame.GetPlayerTurn();
 
@@ -60,9 +60,9 @@ namespace TicTacToeKataTests {
         [Test]
         public void fail_when_playing_the_same_coordinate() {
             var ticTacToeGame = new TicTacToeGame();
-            ticTacToeGame.SetMarkOnBoard(new Coordinate(0, 0));
+            ticTacToeGame.SetMarkOnBoard(new Square(0, 0));
 
-            Action action = () => ticTacToeGame.SetMarkOnBoard(new Coordinate(0, 0));
+            Action action = () => ticTacToeGame.SetMarkOnBoard(new Square(0, 0));
 
             action.Should().Throw<UsedCoordinateException>();
         }

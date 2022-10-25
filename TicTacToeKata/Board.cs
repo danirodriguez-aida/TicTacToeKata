@@ -4,10 +4,10 @@ public class Board
 {
     private string[,] board = new string[3, 3];
 
-    public void SetCoordinate(string symbol, int x, int y)
+    public void SetCoordinate(string symbol, Square square)
     {
-        if (board[x, y] != null) throw new UsedCoordinateException();
-        board[x, y] = symbol;
+        if (board[square.X, square.Y] != null) throw new UsedCoordinateException();
+        board[square.X, square.Y] = symbol;
     }
 
     public string GetCoordinate(int x, int y)
