@@ -78,6 +78,7 @@ namespace TicTacToeKataTests {
 
         [TestCase(0,1)]
         [TestCase(1,2)]
+        [TestCase(2,0)]
         public void playerX_wins(int xPlayerX, int xPlayerY) {
             var ticTacToeGame = new TicTacToeGame();
             ticTacToeGame.SetMarkOnBoard(new Square(xPlayerX, 0));

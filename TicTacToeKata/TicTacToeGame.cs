@@ -24,11 +24,16 @@ public class TicTacToeGame {
         {
             new Square(1, 0), new Square(1, 1),new Square(1, 2)
         };
+        var squaresColumn2 = new List<Square>()
+        {
+            new Square(2, 0), new Square(2, 1),new Square(2, 2)
+        };
 
-        var allXforColumn0 = squaresColumn0.All(s => board.GetSymbol(s) == "X");
-        var allXforColumn1 = squaresColumn1.All(s => board.GetSymbol(s) == "X");
+        var allXForColumn0 = squaresColumn0.All(s => board.GetSymbol(s) == "X");
+        var allXForColumn1 = squaresColumn1.All(s => board.GetSymbol(s) == "X");
+        var allXForColumn2 = squaresColumn2.All(s => board.GetSymbol(s) == "X");
 
-        if (allXforColumn0 ||  allXforColumn1)
+        if (allXForColumn0 ||  allXForColumn1 || allXForColumn2)
             return "Player X";
         return string.Empty;
     }
