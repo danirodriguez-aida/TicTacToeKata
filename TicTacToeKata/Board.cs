@@ -4,14 +4,14 @@ public class Board
 {
     private string[,] board = new string[3, 3];
 
-    public void SetCoordinate(string symbol, Square square)
+    public void SetSymbol(string symbol, Square square)
     {
         if (board[square.X, square.Y] != null) throw new UsedCoordinateException();
         board[square.X, square.Y] = symbol;
     }
 
-    public string GetCoordinate(int x, int y)
+    public string GetSymbol(Square square)
     {
-        return board[x, y];
+        return board[square.X, square.Y];
     }
 }
