@@ -2,8 +2,6 @@ namespace TicTacToeKataTests;
 
 public class Board
 {
-    private string[,] board = new string[3, 3];
-
     private List<Square> squares = new()
     {
         new(0, 0), new (0, 1), new (0, 2),
@@ -13,25 +11,32 @@ public class Board
 
     public void SetSymbol(Symbol symbol, Square square)
     {
-        if (board[square.X, square.Y] != null) throw new UsedCoordinateException();
-        board[square.X, square.Y] = symbol.ToString();
+        var squareBoard = GetSquareBy(square);
+        if (squareBoard.GetMark().HasValue) throw new UsedCoordinateException();
+        squareBoard.SetMark(symbol);
     }
 
-    public string GetSymbol(Square square)
+    public Symbol? GetSymbol(Square square)
     {
-        return board[square.X, square.Y];
+        var squareBoard = GetSquareBy(square);
+        return squareBoard.GetMark();
     }
 
-    public bool IsSameSymbolForRow(int row, string symbol) {
+    public bool IsSameSymbolForRow(int row, Symbol symbol) {
         return GetSquaresForRow(row).All(s => GetSymbol(s) == symbol);
     }
 
-    public bool IsSameSymbolForColumn(int column, string symbol) {
+    public bool IsSameSymbolForColumn(int column, Symbol symbol) {
         return GetSquaresForColumn(column).All(s => GetSymbol(s) == symbol);
     }
 
-    public bool IsSameSymbolForDiagonal(bool isLeftUpToRightDown, string symbol) {
+    public bool IsSameSymbolForDiagonal(bool isLeftUpToRightDown, Symbol symbol) {
         return GetSquaresForDiagonal(isLeftUpToRightDown).All(s => GetSymbol(s) == symbol);
+    }
+
+    private Square GetSquareBy(Square square)
+    {
+        return squares.Single(s => s.X == square.X && s.Y == square.Y);
     }
 
     private IEnumerable<Square> GetSquaresForRow(int row)

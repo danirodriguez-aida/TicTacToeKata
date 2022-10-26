@@ -23,13 +23,13 @@ public class TicTacToeGame {
 
     public string GetWinner() {
         var sizeBoard = new[] { 0, 1, 2 };
-        var playerXWinInRow = sizeBoard.Any(r => board.IsSameSymbolForRow(r, Player1.Symbol.ToString()));
-        var playerXWinInColumn = sizeBoard.Any(r => board.IsSameSymbolForColumn(r, Player1.Symbol.ToString()));
-        var playerXWinInDiagonal = board.IsSameSymbolForDiagonal(true, Player1.Symbol.ToString()) || board.IsSameSymbolForDiagonal(false, Player1.Symbol.ToString());
+        var playerXWinInRow = sizeBoard.Any(r => board.IsSameSymbolForRow(r, Player1.Symbol));
+        var playerXWinInColumn = sizeBoard.Any(r => board.IsSameSymbolForColumn(r, Player1.Symbol));
+        var playerXWinInDiagonal = board.IsSameSymbolForDiagonal(true, Player1.Symbol) || board.IsSameSymbolForDiagonal(false, Player1.Symbol);
 
-        var playerYWinInRow = sizeBoard.Any(r => board.IsSameSymbolForRow(r, Player2.Symbol.ToString()));
-        var playerYWinInColumn = sizeBoard.Any(r => board.IsSameSymbolForColumn(r, Player2.Symbol.ToString()));
-        var playerYWinInDiagonal = board.IsSameSymbolForDiagonal(true, Player2.Symbol.ToString()) || board.IsSameSymbolForDiagonal(false, Player2.Symbol.ToString());
+        var playerYWinInRow = sizeBoard.Any(r => board.IsSameSymbolForRow(r, Player2.Symbol));
+        var playerYWinInColumn = sizeBoard.Any(r => board.IsSameSymbolForColumn(r, Player2.Symbol));
+        var playerYWinInDiagonal = board.IsSameSymbolForDiagonal(true, Player2.Symbol) || board.IsSameSymbolForDiagonal(false, Player2.Symbol);
 
         if (playerXWinInRow || playerXWinInColumn || playerXWinInDiagonal) return Player1.GetDescription();
         if (playerYWinInRow || playerYWinInColumn || playerYWinInDiagonal) return Player2.GetDescription();

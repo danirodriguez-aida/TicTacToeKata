@@ -28,7 +28,7 @@ namespace TicTacToeKataTests {
 
             var board = ticTacToeGame.SetMarkOnBoard(new Square(x, y));
 
-            board.GetSymbol(new Square(x, y)).Should().Be("X");
+            board.GetSymbol(new Square(x, y)).Should().Be(Symbol.X);
         }
 
         [TestCase(0, 0)]
@@ -39,7 +39,7 @@ namespace TicTacToeKataTests {
 
             var board = ticTacToeGame.SetMarkOnBoard(new Square(x, y));
 
-            board.GetSymbol(new Square(x, y)).Should().Be("Y");
+            board.GetSymbol(new Square(x, y)).Should().Be(Symbol.Y);
         }
 
         [Test]
