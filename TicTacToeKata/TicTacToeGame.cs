@@ -1,31 +1,34 @@
 namespace TicTacToeKataTests;
 
 public class TicTacToeGame {
-    private string turn = "X";
+    private const string Player1 = "X";
+    private const string Player2 = "Y";
+
+    private string turnPlayer = Player1;
     private Board board = new();
 
     public string GetPlayerTurn() {
-        return turn;
+        return turnPlayer;
     }
 
     public Board SetMarkOnBoard(Square square) {
-        board.SetSymbol(turn, square);
-        turn = turn == "X" ? "Y" : "X";
+        board.SetSymbol(turnPlayer, square);
+        turnPlayer = turnPlayer == Player1 ? Player2 : Player1;
         return board;
     }
 
     public string GetWinner() {
         var sizeBoard = new[] { 0, 1, 2 };
-        var playerXWinInRow = sizeBoard.Any(r => board.IsSameSymbolForRow(r, "X"));
-        var playerXWinInColumn = sizeBoard.Any(r => board.IsSameSymbolForColumn(r, "X"));
-        var playerXWinInDiagonal = board.IsSameSymbolForDiagonal(true, "X") || board.IsSameSymbolForDiagonal(false, "X");
+        var playerXWinInRow = sizeBoard.Any(r => board.IsSameSymbolForRow(r, Player1));
+        var playerXWinInColumn = sizeBoard.Any(r => board.IsSameSymbolForColumn(r, Player1));
+        var playerXWinInDiagonal = board.IsSameSymbolForDiagonal(true, Player1) || board.IsSameSymbolForDiagonal(false, Player1);
 
-        var playerYWinInRow = sizeBoard.Any(r => board.IsSameSymbolForRow(r, "Y"));
-        var playerYWinInColumn = sizeBoard.Any(r => board.IsSameSymbolForColumn(r, "Y"));
-        var playerYWinInDiagonal = board.IsSameSymbolForDiagonal(true, "Y") || board.IsSameSymbolForDiagonal(false, "Y");
+        var playerYWinInRow = sizeBoard.Any(r => board.IsSameSymbolForRow(r, Player2));
+        var playerYWinInColumn = sizeBoard.Any(r => board.IsSameSymbolForColumn(r, Player2));
+        var playerYWinInDiagonal = board.IsSameSymbolForDiagonal(true, Player2) || board.IsSameSymbolForDiagonal(false, Player2);
 
-        if (playerXWinInRow || playerXWinInColumn || playerXWinInDiagonal) return "Player X";
-        if (playerYWinInRow || playerYWinInColumn || playerYWinInDiagonal) return "Player Y";
+        if (playerXWinInRow || playerXWinInColumn || playerXWinInDiagonal) return $"Player {Player1}";
+        if (playerYWinInRow || playerYWinInColumn || playerYWinInDiagonal) return $"Player {Player2}";
         return string.Empty;
     }
 }
