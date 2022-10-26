@@ -1,11 +1,6 @@
 namespace TicTacToeKataTests;
 
-public class Symbol
+public enum Symbol
 {
-    public Symbol(string value)
-    {
-        Value = value;
-    }
-
-    public string Value { get; }
+   X, Y
 }

@@ -7,7 +7,7 @@ public class Board
     public void SetSymbol(Symbol symbol, Square square)
     {
         if (board[square.X, square.Y] != null) throw new UsedCoordinateException();
-        board[square.X, square.Y] = symbol.Value;
+        board[square.X, square.Y] = symbol.ToString();
     }
 
     public string GetSymbol(Square square)

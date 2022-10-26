@@ -1,34 +1,38 @@
 namespace TicTacToeKataTests;
 
 public class TicTacToeGame {
-    private const string Player1 = "X";
-    private const string Player2 = "Y";
-
-    private string turnPlayer = Player1;
+    private readonly Player Player1 = new(Symbol.X);
+    private readonly Player Player2 = new(Symbol.Y);
+    private Player turnPlayer;
     private Board board = new();
 
+    public TicTacToeGame()
+    {
+        turnPlayer = Player1;
+    }
+
     public string GetPlayerTurn() {
-        return turnPlayer;
+        return turnPlayer.Symbol.ToString();
     }
 
     public Board SetMarkOnBoard(Square square) {
-        board.SetSymbol(new Symbol(turnPlayer), square);
+        board.SetSymbol(turnPlayer.Symbol, square);
         turnPlayer = turnPlayer == Player1 ? Player2 : Player1;
         return board;
     }
 
     public string GetWinner() {
         var sizeBoard = new[] { 0, 1, 2 };
-        var playerXWinInRow = sizeBoard.Any(r => board.IsSameSymbolForRow(r, Player1));
-        var playerXWinInColumn = sizeBoard.Any(r => board.IsSameSymbolForColumn(r, Player1));
-        var playerXWinInDiagonal = board.IsSameSymbolForDiagonal(true, Player1) || board.IsSameSymbolForDiagonal(false, Player1);
+        var playerXWinInRow = sizeBoard.Any(r => board.IsSameSymbolForRow(r, Player1.Symbol.ToString()));
+        var playerXWinInColumn = sizeBoard.Any(r => board.IsSameSymbolForColumn(r, Player1.Symbol.ToString()));
+        var playerXWinInDiagonal = board.IsSameSymbolForDiagonal(true, Player1.Symbol.ToString()) || board.IsSameSymbolForDiagonal(false, Player1.Symbol.ToString());
 
-        var playerYWinInRow = sizeBoard.Any(r => board.IsSameSymbolForRow(r, Player2));
-        var playerYWinInColumn = sizeBoard.Any(r => board.IsSameSymbolForColumn(r, Player2));
-        var playerYWinInDiagonal = board.IsSameSymbolForDiagonal(true, Player2) || board.IsSameSymbolForDiagonal(false, Player2);
+        var playerYWinInRow = sizeBoard.Any(r => board.IsSameSymbolForRow(r, Player2.Symbol.ToString()));
+        var playerYWinInColumn = sizeBoard.Any(r => board.IsSameSymbolForColumn(r, Player2.Symbol.ToString()));
+        var playerYWinInDiagonal = board.IsSameSymbolForDiagonal(true, Player2.Symbol.ToString()) || board.IsSameSymbolForDiagonal(false, Player2.Symbol.ToString());
 
-        if (playerXWinInRow || playerXWinInColumn || playerXWinInDiagonal) return $"Player {Player1}";
-        if (playerYWinInRow || playerYWinInColumn || playerYWinInDiagonal) return $"Player {Player2}";
+        if (playerXWinInRow || playerXWinInColumn || playerXWinInDiagonal) return Player1.GetDescription();
+        if (playerYWinInRow || playerYWinInColumn || playerYWinInDiagonal) return Player2.GetDescription();
         return string.Empty;
     }
 }
