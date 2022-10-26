@@ -2,7 +2,7 @@ namespace TicTacToeKataTests;
 
 public class TicTacToeGame {
     private readonly Player Player1 = new(Symbol.X);
-    private readonly Player Player2 = new(Symbol.Y);
+    private readonly Player Player2 = new(Symbol.O);
     private Player turnPlayer;
     private Board board = new();
 
@@ -12,7 +12,7 @@ public class TicTacToeGame {
     }
 
     public string GetPlayerTurn() {
-        return turnPlayer.Symbol.ToString();
+        return turnPlayer.GetDescription();
     }
 
     public Board SetMarkOnBoard(Square square) {
