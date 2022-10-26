@@ -24,9 +24,8 @@ public class TicTacToeGame {
         var playerYWinInColumn = sizeBoard.Any(r => board.IsSameSymbolForColumn(r, "Y"));
         var playerYWinInDiagonal = board.IsSameSymbolForDiagonal(true, "Y") || board.IsSameSymbolForDiagonal(false, "Y");
 
-        if (playerXWinInRow || playerXWinInColumn || playerXWinInDiagonal)
-            return "Player X";
-        if (playerYWinInRow || playerYWinInColumn || playerYWinInDiagonal)  return "Player Y";
+        if (playerXWinInRow || playerXWinInColumn || playerXWinInDiagonal) return "Player X";
+        if (playerYWinInRow || playerYWinInColumn || playerYWinInDiagonal) return "Player Y";
         return string.Empty;
     }
 }
