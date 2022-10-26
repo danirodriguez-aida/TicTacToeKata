@@ -4,10 +4,10 @@ public class Board
 {
     private string[,] board = new string[3, 3];
 
-    public void SetSymbol(string symbol, Square square)
+    public void SetSymbol(Symbol symbol, Square square)
     {
         if (board[square.X, square.Y] != null) throw new UsedCoordinateException();
-        board[square.X, square.Y] = symbol;
+        board[square.X, square.Y] = symbol.Value;
     }
 
     public string GetSymbol(Square square)

@@ -12,7 +12,7 @@ public class TicTacToeGame {
     }
 
     public Board SetMarkOnBoard(Square square) {
-        board.SetSymbol(turnPlayer, square);
+        board.SetSymbol(new Symbol(turnPlayer), square);
         turnPlayer = turnPlayer == Player1 ? Player2 : Player1;
         return board;
     }
